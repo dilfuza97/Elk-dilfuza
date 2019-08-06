@@ -94,7 +94,7 @@ resource "aws_instance" "elk" {
         "sudo yum install kibana -y",
         "sudo systemctl enable kibana",
         "sudo systemctl start kibana",
-        
+        "sudo echo kibanaadmin:`openssl passwd -apr1 '${var.password}'` | sudo tee -a /etc/nginx/htpasswd.users",
         "sudo mv /tmp/elk.${var.domain}.conf /etc/nginx/conf.d/elk.${var.domain}.conf",
         "sudo sed -i 's/tobereplaced/elk.${var.domain}/g' /etc/nginx/conf.d/elk.${var.domain}.conf",
         "sudo systemctl restart nginx",
