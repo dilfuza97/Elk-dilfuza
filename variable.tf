@@ -7,4 +7,6 @@ variable "ssh_key_location" {}
 variable "zone_id" {}
 variable "domain" {}
 variable "region" {}
+variable "email" {}
+variable "password" {}
 
